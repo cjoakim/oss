@@ -1,0 +1,29 @@
+
+Jasmine:
+--------
+- see http://www.cheatography.com/citguy/cheat-sheets/jasmine-js-testing/
+
+
+Git:
+----
+- see http://git-scm.com/book/en/v2/Git-Basics-Tagging
+
+~/github/m26-js [master]$ git tag
+v0.1.0
+v0.1.1
+v0.1.2
+v0.1.4
+
+$ git tag v0.1.5
+
+$ git push origin --tags
+
+
+npm and publishing:
+-------------------
+$ npm pack   -> sb-js-0.0.1.tgz
+$ tar tvf sb-js-0.0.1.tgz
+
+$ npm publish
+
+

@@ -1,0 +1,48 @@
+{
+  "name":    "counter-hash-js",
+  "version": "0.2.0",
+  "description": "A Node.js library implementing a simple CounterHash class, for incrementing and decrementing keys.",
+  "homepage": "https://github.com/cjoakim/counter-hash-js",
+  "main": "lib/counter-hash-js.js",
+  "author": {
+    "name": "Chris Joakim",
+    "url":  "http://www.chrisjoakim.com"
+  },
+  "licenses": [
+    {
+      "type": "ISC",
+      "url":  "https://github.com/cjoakim/counter-hash-js/blob/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url":  "https://github.com/cjoakim/counter-hash-js"
+  },
+  "dependencies": {
+    "sb-js": "~0.3.0"
+  },
+  "devDependencies": {
+    "assert": "^1.3.0",
+    "grunt": "~0.4.5",
+    "grunt-typescript": "~0.6.1",
+    "grunt-contrib-coffee": "~0.13.0",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-mocha-istanbul": "~2.4.0",
+    "istanbul": "~0.3.13",
+    "mocha": "~2.2.4",
+    "should": "~6.0.1",
+    "sinon": "~1.14.1",
+    "typescript": "~1.4.1"
+  },
+  "scripts": {
+    "test": "grunt ; grunt test"
+  },
+  "keywords": [
+    "Counter",
+    "Hash",
+    "increment",
+    "decrement",
+    "keys",
+    "typescript"
+  ]
+}

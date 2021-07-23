@@ -1,0 +1,16 @@
+--- 
+"json_data_file":                samples/data/2012-07-11-Dav7.json
+"approx_max_points":             500
+"map_dom_element_id":            map_canvas
+"gmap_api_key":                  xxx-your-key-xxx
+"gmap_type":                     TERRAIN
+"gmap_zoom_level":               14
+"gmap_route_color":              FF0001
+"gmap_route_opacity":            0.66
+"gmap_route_weight":             2
+"include_start_finish_markers":  true
+"include_mile_markers":          true
+"start_marker_color":            00FF00
+"finish_marker_color":           FF0000
+"mile_marker_color":             0000FF 
+"mile_marker_title_detail":      miles,elapsed,pace,mph

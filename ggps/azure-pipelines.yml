@@ -1,0 +1,58 @@
+# Azure DevOps Build Pipeline
+# Chris Joakim, Microsoft, 2020/02/24
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- script: |
+    sudo apt-get upgrade python3
+    sudo apt-get install python3-venv
+  displayName: 'update and install python programs'
+
+- script: |
+    python3 -m venv ggps_environment
+    source ggps_environment/bin/activate
+    python --version
+    pip --version
+    pip install -r requirements.txt
+    pip install pytest-azurepipelines
+    pip list
+  displayName: 'create virtual environment and install requirements'
+
+- script: |
+    source ggps_environment/bin/activate
+    python3 ggps-examples.py
+  displayName: 'execute ggps-examples.py'
+
+- script: |
+    source ggps_environment/bin/activate
+    pip list
+    python -m pytest -v tests/ --cov=ggps/ --cov-report html tests/
+  displayName: 'execute unit tests'
+
+- script: |
+    source ggps_environment/bin/activate
+    rstcheck README.rst
+  displayName: 'rstcheck README.rst'
+
+- script: |
+    source ggps_environment/bin/activate
+    flake8 -v ggps --ignore F401
+  displayName: 'flake8 code analysis'
+
+- script: |
+    source ggps_environment/bin/activate
+    python setup.py sdist
+  displayName: 'create source distribution for PyPI'
+
+# - script: |
+#     source ggps_environment/bin/activate
+#     python setup.py sdist upload
+#   displayName: 'upload source distribution to PyPI'
+
+- script: ls -alR
+  displayName: 'list files at EOJ'

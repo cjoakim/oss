@@ -1,0 +1,1 @@
+{"generations": 10, "pattern": "test-{}.txt", "param_list": ["gen"], "regexp": "todo"}

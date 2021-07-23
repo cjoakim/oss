@@ -1,0 +1,16 @@
+
+exclude *.json
+exclude *.sh
+exclude *.txt
+exclude *.xml
+
+prune   bin
+prune   htmlcov
+
+exclude pyvenv.cfg
+exclude examples.py
+
+include README.rst
+include LICENSE
+
+recursive-include tests *.py

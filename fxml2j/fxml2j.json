@@ -1,0 +1,20 @@
+{
+  "javafx_src_dir": "workspace/ExampleApp/src",
+  "fxml_filename":  "com/joakim/example/Example.fxml",
+
+  "generate": true,
+  "diff":     true,
+  "verbose":  true,
+
+  "multiWordTagMappings": {
+    "borderpane":    "BorderPane",
+    "combobox":      "ComboBox",
+    "gridpane":      "GridPane",
+    "tablecolumn":   "TableColumn",
+    "tableview":     "TableView",
+    "tabpane":       "TabPane",
+    "textfield":     "TextField",
+    "addadditional": "AddAdditional"
+  }
+}
+

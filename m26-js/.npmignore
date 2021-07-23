@@ -1,0 +1,15 @@
+*.tgz
+*.txt
+build.xml
+formula.rb
+examples.js
+Gruntfile.js
+
+.idea/
+coverage/
+src/
+tasks/
+test/
+test-src/
+tmp/
+

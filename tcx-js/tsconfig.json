@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "strict": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "resolveJsonModule": false,
+        "esModuleInterop": false,
+        "sourceMap": true,
+        "declaration": true,
+        "target": "es2015",
+        "outDir": "dist"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "test",
+        "node_modules"
+    ]
+}

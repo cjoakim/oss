@@ -1,0 +1,13 @@
+include *.in
+include *.py
+include LICENSE
+include unittest.cfg
+
+recursive-include tests *.py
+
+exclude .coveragerc
+exclude build.sh
+exclude venv.sh
+exclude examples.py
+exclude examples2.py
+exclude unittest.cfg
