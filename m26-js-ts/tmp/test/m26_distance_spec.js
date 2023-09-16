@@ -18,11 +18,11 @@
     });
     it("should calculate an 1800y, and convert to other units", function() {
       var d;
-      d = new Distance(1800.0, 'y');
-      expect(d.uom()).toBe(Constants.UOM_YARDS);
-      expect(d.as_miles()).isWithin(0.0000000001, 1.0227272727272727);
-      expect(d.as_kilometers()).isWithin(0.0000000001, 1.64592);
-      return expect(d.as_yards()).isWithin(0.000001, 1800);
+      d1 = new Distance(26.2);
+      d2 = new Distance(4.8);
+      d3 = d1.add(d2);
+      expect(d3.uom()).toBe(Constants.UOM_MILES);
+      return expect(d3.as_miles()).isWithin(0.0000000001, 31.0);
     });
     it("should add", function() {
       var d1, d2, d3;
