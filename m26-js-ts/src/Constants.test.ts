@@ -2,7 +2,11 @@ import { Constants } from "./Constants";
 
 test("constant values", () => {
 
-    expect(Constants.VERSION).toBe('1.0.0');
+    expect(Constants.LIB_NAME).toBe('m26-js');
+    expect(Constants.LIB_VERSION).toBe('1.0.0');
+    expect(Constants.LIB_AUTHOR).toBe('Chris Joakim');
+    expect(Constants.LIB_LICENSE).toBe('MIT');
+
     expect(Constants.UOM_MILES).toBe('m');
     expect(Constants.UOM_KILOMETERS).toBe('k');
     expect(Constants.UOM_YARDS).toBe('y');

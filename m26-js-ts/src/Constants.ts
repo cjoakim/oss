@@ -1,7 +1,11 @@
 
 export class Constants {
     
-    public static VERSION          : string = '1.0.0';
+    public static LIB_NAME         : string = 'm26-js';
+    public static LIB_VERSION      : string = '1.0.0';
+    public static LIB_AUTHOR       : string = 'Chris Joakim';
+    public static LIB_LICENSE      : string = 'MIT';
+
     public static UOM_MILES        : string = 'm';
     public static UOM_KILOMETERS   : string = 'k';
     public static UOM_YARDS        : string = 'y';
