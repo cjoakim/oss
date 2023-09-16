@@ -1,59 +1,93 @@
 
+import { Constants } from "./Constants";
+
 export class Distance {
     
     constructor(
-        public verbose: boolean = false) {
-        // no statements required
+        public value: number,
+        public uom: string = Constants.UOM_MILES) {
+
+        switch (uom.toLowerCase()) {
+            case Constants.UOM_MILES:
+                break;
+            case Constants.UOM_KILOMETERS:
+                break;
+            case Constants.UOM_YARDS:
+                break;
+            default:
+                this.uom = Constants.UOM_MILES; // default UOM
+                break;
+        }
     }
 
-//     constructor: (d=0, uom=Constants.UOM_MILES) ->
-//     @d = parseFloat(d)
-//     @d = 0 unless @d
-//     if uom
-//       @u = uom.toString().toLowerCase()
-//     else
-//       @u = Constants.UOM_MILES
+    asMiles(): number {
+        switch (this.uom) {
+            case Constants.UOM_MILES:
+                return this.value;
+                break;
+            case Constants.UOM_KILOMETERS:
+                return this.value / Constants.KILOMETERS_PER_MILE;
+                break;
+            case Constants.UOM_YARDS:
+                return this.value / Constants.YARDS_PER_MILE;
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
 
-//     unless @u in Constants.UNITS_OF_MEASURE
-//       @u = Constants.UOM_MILES
+    asKilometers(): number {
+        switch (this.uom) {
+            case Constants.UOM_MILES:
+                return this.value * Constants.KILOMETERS_PER_MILE;
+                break;
+            case Constants.UOM_KILOMETERS:
+                return this.value;
+                break;
+            case Constants.UOM_YARDS:
+                return (this.value / Constants.YARDS_PER_MILE) / Constants.MILES_PER_KILOMETER;
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
 
-//   uom: ->
-//     @u
+    asYards(): number {
+        switch (this.uom) {
+            case Constants.UOM_MILES:
+                return this.value * Constants.YARDS_PER_MILE;
+                break;
+            case Constants.UOM_KILOMETERS:
+                return (this.value * Constants.MILES_PER_KILOMETER) * Constants.YARDS_PER_MILE;
+                break;
+            case Constants.UOM_YARDS:
+                return this.value;
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
 
-//   dist: ->
-//     @d
+    add(another: Distance): Distance {
+        let m1 = this.asMiles();
+        let m2 = another.asMiles();
+        let msum = m1 + m2;
+        if (msum < 0) {
+            msum = 0;
+        }
+        return new Distance(msum);
+    }
 
-//   as_miles: ->
-//     switch @u
-//       when Constants.UOM_MILES then @d
-//       when Constants.UOM_KILOMETERS then @d / Constants.KILOMETERS_PER_MILE
-//       when Constants.UOM_YARDS then @d / Constants.YARDS_PER_MILE
-//       else 0
-
-//   as_kilometers: ->
-//     switch @u
-//       when Constants.UOM_MILES then @d * Constants.KILOMETERS_PER_MILE
-//       when Constants.UOM_KILOMETERS then @d
-//       when Constants.UOM_YARDS then (@d / Constants.YARDS_PER_MILE) / Constants.MILES_PER_KILOMETER
-//       else 0
-
-//   as_yards: ->
-//     switch @u
-//       when Constants.UOM_MILES then @d * Constants.YARDS_PER_MILE
-//       when Constants.UOM_KILOMETERS then (@d * Constants.MILES_PER_KILOMETER) * Constants.YARDS_PER_MILE
-//       when Constants.UOM_YARDS then @d
-//       else 0
-
-//   add: (another_instance) ->
-//     if another_instance
-//       d1 = @as_miles()
-//       d2 = another_instance.as_miles()
-//       new Distance(d1 + d2)
-
-//   subtract: (another_instance) ->
-//     if another_instance
-//       d1 = @as_miles()
-//       d2 = another_instance.as_miles()
-//       new Distance(d1 - d2)
-
+    subtract(another: Distance): Distance {
+        let m1 = this.asMiles();
+        let m2 = another.asMiles();
+        let mdiff = m1 - m2;
+        if (mdiff < 0) {
+            mdiff = 0;
+        }
+        return new Distance(mdiff);
+    }
 }
