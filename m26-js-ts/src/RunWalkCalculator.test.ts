@@ -17,7 +17,7 @@ expect.extend({
           `expected ${received} to be close to ${expected} with precision ${precision}`,
       };
     },
-  });
+});
 
 test("RunWalkCalculator: calculate with all walking, no running", () => {
 
