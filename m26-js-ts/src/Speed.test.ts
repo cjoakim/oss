@@ -4,7 +4,7 @@ import { Distance } from "./Distance";
 import { ElapsedTime } from "./ElapsedTime";
 import { Speed } from "./Speed";
 
-test("property formats ss second values as nn.nn strings", () => {
+test("Speed: property formats ss second values as nn.nn strings", () => {
     let d1  = new Distance(1.0);
     let et1 = new ElapsedTime('8:00');
     let s1  = new Speed(d1, et1);
@@ -15,7 +15,7 @@ test("property formats ss second values as nn.nn strings", () => {
     expect(s1.formattedSeconds(59.99)).toBe('59.99');
 });
 
-test("calculates a 2-mile walk, with round numbers", () => {
+test("Speed: calculates a 2-mile walk, with round numbers", () => {
     let d1  = new Distance(2.0);
     let et1 = new ElapsedTime('30:00');
     let s1  = new Speed(d1, et1);
@@ -23,7 +23,7 @@ test("calculates a 2-mile walk, with round numbers", () => {
     expect(s1.pacePerMile()).toBe('15:00.00');
 });
 
-test("calculates a marathon", () => {
+test("Speed: calculates a marathon with fractional seconds pace", () => {
     let d1  = new Distance(26.2);
     let et1 = new ElapsedTime('3:47:30');
     let s1  = new Speed(d1, et1);
@@ -31,7 +31,7 @@ test("calculates a marathon", () => {
     expect(s1.pacePerMile()).toBe('8:40.99');
 });
 
-test("project a time using simple linear formula", () => {
+test("Speed: project a time using simple linear formula", () => {
     let d1  = new Distance(10.0);
     let d2  = new Distance(20.0);
     let et1 = new ElapsedTime('1:30:00');
@@ -42,7 +42,7 @@ test("project a time using simple linear formula", () => {
     expect(hhmmss).toBe('03:00:00');
 });
 
-test("project a time using the exponential riegel formula", () => {
+test("Speed: project a time using the exponential riegel formula", () => {
     let d1  = new Distance(10.0);
     let d2  = new Distance(20.0);
     let et1 = new ElapsedTime('1:30:00');
@@ -53,7 +53,7 @@ test("project a time using the exponential riegel formula", () => {
     expect(hhmmss).toBe('03:07:38');
 });
 
-test("calculated age-graded speeds", () => {
+test("Speed: calculated age-graded speeds", () => {
     let d  = new Distance(26.2);
     let et = new ElapsedTime('3:47:30');
     let s1  = new Speed(d, et);

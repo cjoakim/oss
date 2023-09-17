@@ -2,7 +2,7 @@
 import { Distance } from "./Distance";
 import { Constants } from "./Constants";
 
-test("constructor default uom", () => {
+test("Distance: constructor default uom", () => {
     let d = new Distance(26.2);
     expect(d.value).toBe(26.2);
     expect(d.uom).toBe(Constants.UOM_MILES);
@@ -12,7 +12,7 @@ test("constructor default uom", () => {
     expect(d.asYards()).toBe(46112.0);
 });
 
-test("constructor miles uom", () => {
+test("Distance: constructor miles uom", () => {
     let d = new Distance(26.2, Constants.UOM_MILES);
     expect(d.value).toBe(26.2);
     expect(d.uom).toBe(Constants.UOM_MILES);
@@ -22,7 +22,7 @@ test("constructor miles uom", () => {
     expect(d.asYards()).toBe(46112.0);
 });
 
-test("constructor kilometers uom", () => {
+test("Distance: constructor kilometers uom", () => {
     let d = new Distance(10.0, Constants.UOM_KILOMETERS);
     expect(d.value).toBe(10.0);
     expect(d.uom).toBe(Constants.UOM_KILOMETERS);
@@ -32,7 +32,7 @@ test("constructor kilometers uom", () => {
     expect(d.asYards()).toBe(10936.132983377078);
 });
 
-test("constructor yards uom", () => {
+test("Distance: constructor yards uom", () => {
     let d = new Distance(1800, Constants.UOM_YARDS);
     expect(d.value).toBe(1800);
     expect(d.uom).toBe(Constants.UOM_YARDS);
@@ -42,7 +42,7 @@ test("constructor yards uom", () => {
     expect(d.asYards()).toBe(1800);
 });
 
-test("add", () => {
+test("Distance: add", () => {
     let d1 = new Distance(26.2);
     let d2 = new Distance(4.8);
     let d3 = d1.add(d2);
@@ -50,7 +50,7 @@ test("add", () => {
     expect(d3.asMiles()).toBe(31.0);
 });
 
-test("subtract", () => {
+test("Distance: subtract", () => {
     let d1 = new Distance(26.2);
     let d2 = new Distance(10.0, 'k');
     let d3 = d1.subtract(d2);

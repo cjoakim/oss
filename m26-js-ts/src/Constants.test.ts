@@ -1,6 +1,6 @@
 import { Constants } from "./Constants";
 
-test("constant values", () => {
+test("Constants: constant values", () => {
 
     expect(Constants.LIB_NAME).toBe('m26-js');
     expect(Constants.LIB_VERSION).toBe('1.0.0');

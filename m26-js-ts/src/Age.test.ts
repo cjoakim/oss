@@ -1,6 +1,6 @@
 import { Age } from "./Age";
 
-test("maxPulse", () => {
+test("Age: maxPulse", () => {
     let a19 = new Age(19.1);
     let a66 = new Age(66);
     expect(a19.value).toBe(19.1);
@@ -9,7 +9,7 @@ test("maxPulse", () => {
     expect(a66.maxPulse()).toBe(220 - 66);
 });
 
-test("add", () => {
+test("Age: add", () => {
     let a1 = new Age(19.1);
     let a2 = new Age(66);
     a1.add(a2);
@@ -17,7 +17,7 @@ test("add", () => {
     expect(a2.value).toBe(66);
 });
 
-test("subtract", () => {
+test("Age: subtract", () => {
     let a1 = new Age(19.1);
     let a2 = new Age(66);
     a2.subtract(a1);
@@ -25,7 +25,7 @@ test("subtract", () => {
     expect(a2.value).toBe(66 - 19.1);
 });
 
-test("maxPulse and trainingZones", () => {
+test("Age: maxPulse and trainingZones", () => {
     let a1 = new Age(19.1);
     let a2 = new Age(66);
 
