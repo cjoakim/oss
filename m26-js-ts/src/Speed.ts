@@ -31,18 +31,7 @@ export class Speed {
         let spm : number = this.secondsPerMile();
         let mm : number = Math.floor(spm / Constants.SECONDS_PER_MINUTE);
         let ssNum : number =  spm - (mm * Constants.SECONDS_PER_MINUTE);
-        let ssStr : string = null;
-
-        if (ssNum < 10) {
-            ssStr = '0' + ssNum;
-        }
-        else {
-            ssStr = '' + ssNum;
-        }
-        
-        if (ssStr.length > 5) {
-            ssStr = ssStr.substring(0, 5); // truncate
-        }
+        let ssStr : string = this.formattedSeconds(ssNum);
         return '' + mm + ':' + ssStr;
     }
 
@@ -67,5 +56,15 @@ export class Speed {
         let otherSecs = eventSecs * agFactor;
         let otherET = new ElapsedTime('' + otherSecs);
         return new Speed(this.distance, otherET);
+    }
+
+    formattedSeconds(ssNum : number) {
+        let ssStr : string = ssNum.toFixed(2);
+        if (ssNum < 10) {
+            return '0' + ssStr;
+        }
+        else {
+            return '' + ssStr;
+        }
     }
 }

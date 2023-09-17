@@ -1,16 +1,26 @@
 
 import { Age } from "./Age";
 import { Distance } from "./Distance";
-import { Constants } from "./Constants";
 import { ElapsedTime } from "./ElapsedTime";
 import { Speed } from "./Speed";
+
+test("property formats ss second values as nn.nn strings", () => {
+    let d1  = new Distance(1.0);
+    let et1 = new ElapsedTime('8:00');
+    let s1  = new Speed(d1, et1);
+    expect(s1.formattedSeconds(0)).toBe('00.00');
+    expect(s1.formattedSeconds(1)).toBe('01.00');
+    expect(s1.formattedSeconds(17.76)).toBe('17.76');
+    expect(s1.formattedSeconds(59.90)).toBe('59.90');
+    expect(s1.formattedSeconds(59.99)).toBe('59.99');
+});
 
 test("calculates a 2-mile walk, with round numbers", () => {
     let d1  = new Distance(2.0);
     let et1 = new ElapsedTime('30:00');
     let s1  = new Speed(d1, et1);
     expect(s1.secondsPerMile()).toBe(900);
-    expect(s1.pacePerMile()).toBe('15:00');
+    expect(s1.pacePerMile()).toBe('15:00.00');
 });
 
 test("calculates a marathon", () => {
@@ -21,16 +31,38 @@ test("calculates a marathon", () => {
     expect(s1.pacePerMile()).toBe('8:40.99');
 });
 
-// it('calculates a marathon, with fractional pace_per_mile', function() {
-//     var d, s, t;
-//     d = new Distance(26.2);
-//     t = new ElapsedTime('03:47:30');
-//     s = new Speed(d, t);
-//     expect(s.mph()).isWithin(0.000001, 6.90989010989011);
-//     expect(s.kph()).isWithin(0.000001, 11.120390189010989);
-//     expect(s.yph()).isWithin(0.000001, 12161.4065934066);
-//     expect(s.seconds_per_mile()).isWithin(0.000001, 520.992366412214);
-//     return expect(s.pace_per_mile()).toBe('8:40.99');
-//   });
+test("project a time using simple linear formula", () => {
+    let d1  = new Distance(10.0);
+    let d2  = new Distance(20.0);
+    let et1 = new ElapsedTime('1:30:00');
+    let s1  = new Speed(d1, et1);
+    expect(s1.secondsPerMile()).toBe(540.0);
+    expect(s1.pacePerMile()).toBe('9:00.00');
+    let hhmmss = s1.projectedTime(d2);
+    expect(hhmmss).toBe('03:00:00');
+});
 
+test("project a time using the exponential riegel formula", () => {
+    let d1  = new Distance(10.0);
+    let d2  = new Distance(20.0);
+    let et1 = new ElapsedTime('1:30:00');
+    let s1  = new Speed(d1, et1);
+    expect(s1.secondsPerMile()).toBe(540.0);
+    expect(s1.pacePerMile()).toBe('9:00.00');
+    let hhmmss = s1.projectedTime(d2, 'riegel');
+    expect(hhmmss).toBe('03:07:38');
+});
 
+test("calculated age-graded speeds", () => {
+    let d  = new Distance(26.2);
+    let et = new ElapsedTime('3:47:30');
+    let s1  = new Speed(d, et);
+    let a1 = new Age(42.5);
+    let a2 = new Age(43.5);
+    let a3 = new Age(57.1);
+    expect(s1.mph()).toBe(6.90989010989011);
+    let s2 = s1.ageGraded(a1, a2);
+    let s3 = s1.ageGraded(a1, a3);
+    expect(s2.mph()).toBe(6.871129889997814);
+    expect(s3.mph()).toBe(6.341693000739595);
+});
