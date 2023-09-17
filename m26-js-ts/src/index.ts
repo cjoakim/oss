@@ -1,14 +1,9 @@
 
-import { Greeter } from "./Greeter.js";
-
 import util from "util";
 
 let func = process.argv[2];
 
 switch (func) {
-    case "hello":
-        hello();
-        break;
     case "xxx":
         xxx();
         break;
@@ -18,11 +13,6 @@ switch (func) {
     default:
         displayCommandLineExamples();
         break;
-}
-
-function hello() {
-    let g = new Greeter();
-    console.log(g.greet(process.argv[3]));
 }
 
 function xxx() {
