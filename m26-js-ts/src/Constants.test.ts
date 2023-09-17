@@ -18,5 +18,6 @@ test("constant values", () => {
     expect(Constants.FEET_PER_KILOMETER).toBe(3280.839895013123);
     expect(Constants.FEET_PER_METER).toBe(3.280839895013123);
     expect(Constants.YARDS_PER_MILE).toBe(1760.0);
+    expect(Constants.SECONDS_PER_MINUTE).toBe(60.0);
     expect(Constants.SECONDS_PER_HOUR).toBe(3600.0);
 });

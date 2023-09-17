@@ -18,5 +18,6 @@ export class Constants {
     public static FEET_PER_KILOMETER  : number = 3280.839895013123;
     public static FEET_PER_METER      : number = 3.280839895013123;
     public static YARDS_PER_MILE      : number = 1760.0;
+    public static SECONDS_PER_MINUTE  : number = 60.0;
     public static SECONDS_PER_HOUR    : number = 3600.0;
 }

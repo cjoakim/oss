@@ -29,14 +29,21 @@ export class Speed {
 
     pacePerMile() : string {
         let spm : number = this.secondsPerMile();
-        let mm = Math.floor(spm / 60.0);
-        let ss = spm - (mm * 60.0);
-        if (ss < 10) {
-            return '' + mm + ':0' + ss;
+        let mm : number = Math.floor(spm / Constants.SECONDS_PER_MINUTE);
+        let ssNum : number =  spm - (mm * Constants.SECONDS_PER_MINUTE);
+        let ssStr : string = null;
+
+        if (ssNum < 10) {
+            ssStr = '0' + ssNum;
         }
         else {
-            return '' + mm + ':' + ss;
+            ssStr = '' + ssNum;
         }
+        
+        if (ssStr.length > 5) {
+            ssStr = ssStr.substring(0, 5); // truncate
+        }
+        return '' + mm + ':' + ssStr;
     }
 
     projectedTime(anotherDistance: Distance, algorithm='simple') : string {
