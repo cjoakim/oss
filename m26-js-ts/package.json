@@ -3,13 +3,14 @@
     "version": "0.4.0",
     "description": "A Node.js library for speed and pace calculations for sports like running and cycling. Age-graded times and heart-rate training-zones are also supported.",
     "homepage": "https://github.com/cjoakim/oss/tree/main/m26-js-ts",
-
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-
     "engines": {
         "node": ">=18.7.0"
     },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "tsc",
         "prebuild": "rimraf dist/",

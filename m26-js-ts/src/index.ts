@@ -1,31 +1,20 @@
 
-import util from "util";
+import { Age } from "./Age"
+import { AgeCalculator } from "./AgeCalculator"
+import { Constants } from "./Constants"
+import { Distance } from "./Distance";
+import { ElapsedTime } from "./ElapsedTime";
+import { RunWalkCalculation } from "./RunWalkCalculation";
+import { RunWalkCalculator } from "./RunWalkCalculator";
+import { Speed } from "./Speed";
+import { TrainingZone } from "./TrainingZone";
 
-let func = process.argv[2];
-
-switch (func) {
-    case "xxx":
-        xxx();
-        break;
-    case "yyy":
-        yyy();
-        break;
-    default:
-        displayCommandLineExamples();
-        break;
-}
-
-function xxx() {
-    console.log(util.format('  xxx; count: %s', 1));
-}
-
-function yyy() {
-    console.log(util.format('  yyy; count: %s', 1));
-}
-function displayCommandLineExamples() {
-    console.log('');
-    console.log("node .\\dist\\index.js hello Luciano");
-    console.log("node .\\dist\\index.js xxx");
-    console.log("node .\\dist\\index.js yyy <aaa> <bbb> <ccc>");
-    console.log('');
-}
+export { Age }
+export { AgeCalculator }
+export { Constants }
+export { Distance }
+export { ElapsedTime }
+export { RunWalkCalculation }
+export { RunWalkCalculator }
+export { Speed }
+export { TrainingZone }
